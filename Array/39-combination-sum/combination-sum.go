@@ -7,8 +7,6 @@ func backtrack1(candidates, currArr []int, target, idx, sum int) {
         copy(a, currArr)
         res=append(res, a)
         return
-        // res=append(res, currArr)
-        // return
     }
 
     if idx >= len(candidates) || sum > target{
