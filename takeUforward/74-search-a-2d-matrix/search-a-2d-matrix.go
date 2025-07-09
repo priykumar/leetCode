@@ -4,7 +4,6 @@ func findRow(matrix [][]int, target int) int {
         return r
     }
 
-    fmt.Println(l, r)
     res:=-1
     for l<=r {
         m:=l+(r-l)/2
@@ -29,7 +28,6 @@ func searchMatrix(matrix [][]int, target int) bool {
     }
     
     l, r := 0, len(matrix[0])-1
-    fmt.Println(row)
     for l<=r {
         m := l+(r-l)/2
         if matrix[row][m] == target {
