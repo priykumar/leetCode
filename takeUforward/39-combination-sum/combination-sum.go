@@ -4,7 +4,6 @@ func solve(candidates, temp []int, target, currPos, currSum int) {
         temp1 := make([]int, len(temp))
         copy(temp1, temp)
         res = append(res, temp1)
-        fmt.Println(res)
         return
     }
 
@@ -25,6 +24,5 @@ func combinationSum(candidates []int, target int) [][]int {
     res = [][]int{}
     temp := []int{}
     solve(candidates, temp, target, 0, 0)
-    // fmt.Println(res)
     return res
 }
