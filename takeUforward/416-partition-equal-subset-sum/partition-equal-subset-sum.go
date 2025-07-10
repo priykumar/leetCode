@@ -32,6 +32,35 @@ func tabulation(nums []int, totalSum int) []bool {
     return dp[n-1]
 }
 
+func tabulation1(nums []int, totalSum int) []bool {
+    n := len(nums)
+
+    prev, curr := []bool{}, []bool{}
+    for i:=0; i<=totalSum; i++ {
+        prev=append(prev, false)
+        curr=append(curr, false)
+    }
+
+    sort.Ints(nums)
+    prev[nums[0]] = true
+
+    for i:=1; i<n; i++ {
+        for j:=1; j<=totalSum; j++ {
+            // not take
+            curr[j] = curr[j] || prev[j]
+            // take
+            if j>=nums[i] {
+                curr[j] = curr[j] || prev[j-nums[i]]
+            }
+        }
+
+        copy(prev, curr)
+    }
+
+    // fmt.Println(dp)
+    return prev
+}
+
 func canPartition(nums []int) bool {
     totalSum, n := 0, len(nums)
     for i:=0; i<n; i++ {
@@ -42,7 +71,7 @@ func canPartition(nums []int) bool {
         return false
     }
 
-    res := tabulation(nums, totalSum)
+    res := tabulation1(nums, totalSum)
     return res[totalSum/2]
     
 }
