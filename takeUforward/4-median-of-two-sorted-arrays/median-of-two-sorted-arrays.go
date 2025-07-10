@@ -35,7 +35,6 @@ func findMedianSortedArrays(A []int, B []int) float64 {
         }
     } 
 
-    fmt.Println(midIndex1, midIndex2, midEleSum, count, isEven)
     if count<midIndex1 || (midIndex2!=-1 && count<midIndex2) {
         for a < l1 {
             ele = A[a]
@@ -54,17 +53,14 @@ func findMedianSortedArrays(A []int, B []int) float64 {
             }
         }
 
-        fmt.Println(b)
         for b < l2 {
             ele = B[b]
             b++
             count++
 
-            fmt.Println(b, count)
             if midIndex1==count {
                 midEleSum=ele
                 if midIndex2 == -1 {
-                    fmt.Println("here")
                     break
                 }
             }
@@ -75,7 +71,6 @@ func findMedianSortedArrays(A []int, B []int) float64 {
         }
     }
 
-    fmt.Println("->", midIndex1, midIndex2, midEleSum, count)
     res := float64(midEleSum)
     if isEven {
         res=res/2
