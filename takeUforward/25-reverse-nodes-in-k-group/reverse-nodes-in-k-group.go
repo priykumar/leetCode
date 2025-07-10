@@ -29,7 +29,7 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
             curr=curr.Next
             count++
             
-            fmt.Println(count, start_prev, start, end, end_next, curr)
+            // fmt.Println(count, start_prev, start, end, end_next, curr)
             c_curr := start
             for c_curr != end_next {
                 next = c_curr.Next
@@ -38,11 +38,11 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
                 c_curr=next
             }
 
-            fmt.Println(count, start_prev, start, end, end_next)
+            // fmt.Println(count, start_prev, start, end, end_next)
             start_prev.Next = end
             start.Next = end_next
-            fmt.Println(count, start_prev, start, end, end_next)
-            fmt.Println()
+            // fmt.Println(count, start_prev, start, end, end_next)
+            // fmt.Println()
             end=start
         } else {
             curr = curr.Next
