@@ -19,7 +19,6 @@ func isPalindrome(head *ListNode) bool {
 
     l1 = slow
     l2 = slow.Next
-    // fmt.Println(l1, l2, slow)
     isOdd:=false
     if fast.Next == nil {
         isOdd = true
@@ -35,14 +34,11 @@ func isPalindrome(head *ListNode) bool {
         curr=next
     }
 
-    fmt.Println(l1, l2, isOdd)
-    // l1 = prev
     if isOdd {
         l1 = l1.Next
     }
 
     for l1 != nil && l2 != nil {
-        //fmt.Println(l1, l2)
         if l1.Val != l2.Val {
             return false
         }
