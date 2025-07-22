@@ -22,7 +22,7 @@ func verticalTraversal(A *TreeNode)  ([][]int) {
     queue := []node_dist_pair{}
     queue = append(queue, node_dist_pair{A, 0})
     distanceFromCenter_nodes[0] = []int{A.Val}
-    
+
     for len(queue) > 0 {
         sz := len(queue)
         // fmt.Println(queue)
@@ -54,7 +54,7 @@ func verticalTraversal(A *TreeNode)  ([][]int) {
             }
         }
 
-        fmt.Println(distanceFromCenter_nodes)
+        // fmt.Println(distanceFromCenter_nodes)
         queue = queue[sz:]
     }
 
