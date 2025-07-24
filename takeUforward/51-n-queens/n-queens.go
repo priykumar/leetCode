@@ -10,7 +10,6 @@ func isValid(col []int, x, y int) bool {
 }
 
 func solve(n, currRow int, col []int, res *[][]string) {
-    fmt.Println(col)
     if currRow == n {
         board := []string{}
 		for i := 0; i < n; i++ {
