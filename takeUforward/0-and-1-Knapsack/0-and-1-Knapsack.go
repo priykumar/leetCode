@@ -26,9 +26,34 @@ func knapsack(weights []int, values []int, capacity int) int {
 			dp[i][j] = max(nottake_val, take_val)
 		}
 	}
-
-	// fmt.Println(dp)
 	return dp[n-1][capacity]
+}
+
+func knapsack_space_optimised(weights []int, values []int, capacity int) int {
+	n := len(weights)
+
+	curr := make([]int, capacity+1)
+	prev := make([]int, capacity+1)
+
+	for i := weights[0]; i <= capacity; i++ {
+		prev[i] = values[0]
+	}
+
+	for i := 1; i < n; i++ {
+		for j := 0; j <= capacity; j++ {
+			// not take
+			nottake_val := prev[j]
+			//take
+			take_val := 0
+			if weights[i] <= j {
+				take_val = prev[j-weights[i]] + values[i]
+			}
+
+			curr[j] = max(nottake_val, take_val)
+		}
+		copy(prev, curr)
+	}
+	return prev[capacity]
 }
 
 func main() {
