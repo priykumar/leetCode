@@ -15,10 +15,8 @@ func connect(root *Node) *Node {
 
     q := []*Node{root}
     for len(q) > 0 {
-        fmt.Println(q)
         sz := len(q)
         for i:=0; i<sz; i++ {
-            fmt.Println(i, sz)
             if i != sz-1 {
                 q[i].Next = q[i+1]
             } 
