@@ -13,18 +13,15 @@ func solve(root, p, q *TreeNode, lca **TreeNode) {
 
     if p.Val < root.Val && root.Val < q.Val {
         *lca = root
-        fmt.Println("here1")
         return 
     }
 
     if root == p {
         *lca = p
-        fmt.Println("here2")
         return 
     }
     if root == q {
         *lca =q
-        fmt.Println("here3")
         return 
     }
 
@@ -41,8 +38,6 @@ func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
     }
 
     var lca *TreeNode
-    fmt.Println(lca)
     solve(root, p, q, &lca)
-    fmt.Println(lca)
     return lca
 }
