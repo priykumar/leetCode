@@ -21,8 +21,32 @@ func solve(root *TreeNode, isBST *bool) (int, int) {
     fmt.Println(root.Val, min(root.Val, min(lmin, rmin)), max(root.Val, min(lmax, rmax)))
     return min(root.Val, min(lmin, rmin)), max(root.Val, max(lmax, rmax))
 }
-func isValidBST(root *TreeNode) bool {
+func isValidBST1(root *TreeNode) bool {
     isBST := true
     solve(root, &isBST)
     return isBST
+}
+
+func inOrder(root *TreeNode, a *[]int) {
+    if root==nil {
+        return
+    }
+    inOrder(root.Left, a)
+    *a=append(*a, root.Val)
+    inOrder(root.Right, a)
+}
+func isValidBST(root *TreeNode) bool {
+    a:=[]int{}
+    inOrder(root, &a)
+    
+    if len(a)<=1{
+        return true
+    }
+    for i:=1; i<len(a); i++ {
+        if a[i-1]>=a[i] {
+            return false
+        }
+    }
+
+    return true
 }
