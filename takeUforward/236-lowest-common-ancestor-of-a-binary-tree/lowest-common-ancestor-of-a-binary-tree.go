@@ -21,23 +21,18 @@ func solve(root, p, q *TreeNode) (bool, bool){
 
     pFound, qFound := lpFound||rpFound, lqFound||rqFound
     if root == p {
-        fmt.Println("P found")
         pFound = true
-        if (lqFound || rqFound) && lca == nil {
-            fmt.Println("LCA")
+        if qFound && lca == nil {
             lca = p
         }
     }
     if root == q {
-        fmt.Println("Q found")
         qFound = true
-        if (lpFound || rpFound) && lca == nil {
-            fmt.Println("LCA")
+        if pFound && lca == nil {
             lca = q
         }
     }
 
-    fmt.Println(root.Val, pFound, qFound)
     return pFound, qFound
 }
 
