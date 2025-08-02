@@ -18,5 +18,5 @@ func height(root *TreeNode) int {
 }
 
 func maxDepth(root *TreeNode) int {
-    return height(root)+1
+    return height(root)+1 // +1 is added becuase we are calculating depth, for height calculation there should't be +1
 }
