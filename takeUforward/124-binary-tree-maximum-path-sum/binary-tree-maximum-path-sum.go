@@ -26,9 +26,8 @@ func solve(root *TreeNode, res *int) int {
     tempRes := max(max(lsum, rsum), 0)+root.Val
     *res = max(*res, tempRes)
 
-    // *res = max(*res, root.Val + lsum + rsum)
     fmt.Println(root.Val, *res, lsum, rsum)
-    // dp[root] = *res
+    dp[root] = tempRes
     return tempRes
 }
 func maxPathSum(root *TreeNode) int {
