@@ -40,7 +40,6 @@ func (this *Codec) serialize(root *TreeNode) string {
         q=q[sz:]
     }
 
-    fmt.Println(res[1:])
     return res[1:]
 }
 
@@ -73,7 +72,6 @@ func (this *Codec) deserialize(data string) *TreeNode {
             leftnewNode := &TreeNode{-1, nil, nil}
             rightnewNode := &TreeNode{-1, nil, nil}
 
-            fmt.Println("Number is", a[currA_Pos])
             if a[currA_Pos] != "nil" {
                 num := getNumber(a[currA_Pos])
                 leftnewNode.Val = num
@@ -81,7 +79,6 @@ func (this *Codec) deserialize(data string) *TreeNode {
                 leftnewNode = nil
             }
 
-            fmt.Println("Number is", a[currA_Pos+1])
             if a[currA_Pos+1] != "nil" {
                 num := getNumber(a[currA_Pos+1])
                 rightnewNode.Val = num
@@ -90,12 +87,10 @@ func (this *Codec) deserialize(data string) *TreeNode {
             }
 
             if q[i] != nil {
-                fmt.Println("left", q[i], leftnewNode)
                 q[i].Left = leftnewNode
                 q = append(q, leftnewNode)
                 currA_Pos++
 
-                fmt.Println("right", q[i], rightnewNode)
                 q[i].Right = rightnewNode
                 q = append(q, rightnewNode)
                 currA_Pos++
