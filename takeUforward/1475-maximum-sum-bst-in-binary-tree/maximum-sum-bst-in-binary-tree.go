@@ -28,7 +28,7 @@ func isBST(root *TreeNode, res *int) (int, int, int, bool){
         *res = max(*res, sum)
     }
 
-    fmt.Println("For", root.Val, "=", maxval, minval, sum, isbst)
+    // fmt.Println("For", root.Val, "=", maxval, minval, sum, isbst)
     return maxval, minval, sum, isbst
 }
 func maxSumBST(root *TreeNode) int {
