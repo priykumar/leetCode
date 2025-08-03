@@ -49,12 +49,15 @@ func buildTreeFromArray(arr []interface{}) *tree {
 	return root
 }
 
-func findPred_Succ(root *tree, ele int) {
-	var lastRight *tree
-	var lastLeft *tree
+func floor_n_ceil(root *tree, ele int) {
+	var lastRight *tree = &tree{-1, nil, nil}
+	var lastLeft *tree = &tree{-1, nil, nil}
+
+	found := false
 
 	for root != nil {
 		if root.val == ele {
+			found = true
 			break
 		}
 
@@ -67,39 +70,11 @@ func findPred_Succ(root *tree, ele int) {
 		}
 	}
 
-	predRoot, succRoot := root, root
-	pred := -1
-	if predRoot.left == nil {
-		if lastRight == nil {
-			pred = -1
-		} else {
-			pred = lastRight.val
-		}
+	if found {
+		fmt.Println("Floor and Ceil of", ele, "is: ", ele, ele)
 	} else {
-		predRoot = predRoot.left
-		for predRoot != nil && predRoot.right != nil {
-			predRoot = predRoot.right
-		}
-		pred = predRoot.val
+		fmt.Println("Floor and Ceil of", ele, "is: ", lastRight.val, lastLeft.val)
 	}
-
-	succ := -1
-	if succRoot.right == nil {
-		if lastLeft == nil {
-			succ = -1
-		} else {
-			succ = lastLeft.val
-		}
-	} else {
-		succRoot = succRoot.right
-		for succRoot != nil && succRoot.left != nil {
-			succRoot = succRoot.left
-		}
-		succ = succRoot.val
-	}
-
-	fmt.Println("Predecessor of", ele, " is", pred)
-	fmt.Println("Successor of", ele, " is", succ)
 }
 
 // Inorder Successor of a Node
@@ -120,10 +95,11 @@ func findPred_Succ(root *tree, ele int) {
 //	Go up the tree until you find a node that is the right child of its parent. That parent is the predecessor.
 func main() {
 
-	input := []interface{}{5, 2, 10, 1, 4, 7, 12}
+	input := []interface{}{8, 4, 12, 2, 6, 10, 14}
 	root := buildTreeFromArray(input)
-	findPred_Succ(root, 10)
-	fmt.Println()
-	findPred_Succ(root, 12)
+	floor_n_ceil(root, 10)
+	floor_n_ceil(root, 12)
+	floor_n_ceil(root, 11)
+	floor_n_ceil(root, 15)
 
 }
