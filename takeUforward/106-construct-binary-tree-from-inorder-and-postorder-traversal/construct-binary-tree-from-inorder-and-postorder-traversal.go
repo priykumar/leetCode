@@ -25,9 +25,12 @@ func solve(inorder, postorder []int, inStart, inEnd, postStart, postEnd int) *Tr
     root := &TreeNode{postorder[postEnd], nil, nil}
     idx := findInInorder(inorder, inStart, inEnd, postorder[postEnd])
 
-    count1:=idx-inStart
+    // Count of element in inorder and postorder will be same after partition
+    // Count of element in left part = (idx-1)-inStart+1 = idx-inStart = postorder element will start from postStart till (idx-inStart) count
+    // Count of element in right part = inEnd-(idx+1)+1 = inEnd-ids = postorder element will start from postEnd till inEnd-idx count
+    count1:=idx-inStart 
     root.Left = solve(inorder, postorder, inStart, idx-1, postStart, postStart+count1-1)
-    count2:=inEnd-(idx)
+    count2:=inEnd-idx
     root.Right = solve(inorder, postorder, idx+1, inEnd, postEnd-count2, postEnd-1)
 
     return root
