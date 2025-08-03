@@ -100,12 +100,6 @@ func (this *Codec) deserialize(data string) *TreeNode {
                 q = append(q, rightnewNode)
                 currA_Pos++
             } 
-            // else if q[i] != nil && i%2 == 1 {
-            //     fmt.Println("right", q[i], newNode)
-            //     q[i].Right = newNode
-            //     q = append(q, newNode)
-            //     currA_Pos++
-            // }
         }
         q=q[sz:]
     }
