@@ -1,16 +1,19 @@
 func removeDuplicates(nums []int) int {
-    currIdx, fwdIdx, n := 0, 1, len(nums)
-    for fwdIdx<n {
-        for fwdIdx<n && nums[fwdIdx]==nums[fwdIdx-1] {
-            fwdIdx++
-        }
+    n := len(nums)
+    if n == 1 {
+        return 1
+    }
 
-        if fwdIdx<n {
-            currIdx++
-            nums[currIdx]=nums[fwdIdx]   
-            fwdIdx++
+    l, r := 0, 1
+    for r < n {
+        if nums[r] == nums[l] {
+            r++
+        } else {
+            l++
+            nums[l]=nums[r]
+            r++
         }
     }
 
-    return currIdx+1
+    return l+1
 }
