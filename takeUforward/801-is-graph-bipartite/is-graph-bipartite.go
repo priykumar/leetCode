@@ -65,5 +65,6 @@ func isBipartite(graph [][]int) bool {
         color[i]=-1
     }
 
+    // return isBipartite_BFS(nodeCount, color, graph)
     return isBipartite_DFS(nodeCount, color, graph)
 }
