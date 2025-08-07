@@ -56,13 +56,13 @@ func BFS_Approach(numCourses int, adj [][]int) bool {
     }
 
     count := 0
-    tsort := []int{}
+    // tsort := []int{}
     for len(q) > 0 {
         u := q[0]
         // fmt.Println(u)
         q = q[1:]
         count++
-        tsort = append(tsort, u)
+        // tsort = append(tsort, u)
         for _, v := range adj[u] {
             indegree[v]--
             if indegree[v] == 0 {
