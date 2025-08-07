@@ -47,7 +47,7 @@ func BFS_Approach(numCourses int, adj [][]int) bool {
         }
     }
 
-    fmt.Println(adj, indegree)
+    // fmt.Println(adj, indegree)
     q := []int{}
     for i, ele := range indegree {
         if ele == 0{
@@ -59,7 +59,7 @@ func BFS_Approach(numCourses int, adj [][]int) bool {
     tsort := []int{}
     for len(q) > 0 {
         u := q[0]
-        fmt.Println(u)
+        // fmt.Println(u)
         q = q[1:]
         count++
         tsort = append(tsort, u)
@@ -71,7 +71,7 @@ func BFS_Approach(numCourses int, adj [][]int) bool {
         }
     }
 
-    fmt.Println(count, tsort)
+    // fmt.Println(count, tsort)
     return count == numCourses
 }
 
