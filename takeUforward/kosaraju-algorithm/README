@@ -1,0 +1,1 @@
+Given a Directed Graph with V vertices (Numbered from 0 to V-1) and E edges. An edge is represented [ai,bi] denoting a directed edge from vertex ai to bi. Find the number of strongly connected components in the graph.
