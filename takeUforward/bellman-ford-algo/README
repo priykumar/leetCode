@@ -1,0 +1,5 @@
+Given a weighted and directed graph of V vertices and E edges. An edge is represented as [ai, bi, wi], meaning there is a directed edge from ai to bi having weight wi. Find the shortest distance of all the vertices from the source vertex S. If a vertex can't be reached from the S then mark the distance as 109.
+
+
+
+If the graph contains a negative cycle then return -1 in a list.
