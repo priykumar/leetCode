@@ -55,10 +55,10 @@ func preOrederIterative(root *TreeNode) []int {
         return nil
     }
 
-    stack := []*TreeNode{root}
+    stack := []*TreeNode{}
     res := []int{}
     curr:=root
-    for len(stack) > 0 {
+    for curr != nil || len(stack) > 0 {
         for curr != nil {
             res = append(res, curr.Val)
             stack = append(stack, curr)
