@@ -53,9 +53,33 @@ func morris(root *TreeNode) {
     }
 }
 
+func inorderIterative(root *TreeNode) []int {
+    stack := []*TreeNode{}
+    res := []int{}
+    curr := root
+    for curr != nil || len(stack) > 0 {
+        for curr != nil {
+            stack = append(stack, curr)
+            curr = curr.Left
+        }
+
+        curr = stack[len(stack)-1]
+        stack=stack[:len(stack)-1]
+        res = append(res, curr.Val)
+        curr = curr.Right
+    }
+
+    return res
+}
+
 func inorderTraversal(root *TreeNode) []int {
     isMorris := true
+    isIterative := true
     res = []int{}
+
+    if isIterative {
+        return inorderIterative(root)
+    }
 
     if !isMorris {
         solve(root)
