@@ -43,11 +43,11 @@ func modPow(base, exp, mod int) int {
 
 func productQueries(n int, queries [][]int) []int {
     powers := createPower(n)
-    fmt.Println(powers)
+    // mt.Println(powers)
     for i:=1; i<len(powers); i++ {
         powers[i]+=powers[i-1]
     }
-    fmt.Println(powers)
+    // fmt.Println(powers)
     res := make([]int, len(queries))
 
     for i, q := range queries {
