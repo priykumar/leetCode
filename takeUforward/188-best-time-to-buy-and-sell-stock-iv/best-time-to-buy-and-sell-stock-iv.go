@@ -1,5 +1,5 @@
 func maxProfit(k int, prices []int) int {
-    prev, curr := make([]int, 2*k+1), make([]int, 2*k+1)
+    prev, curr := make([]int, 2*k), make([]int, 2*k)
     for t := 0; t < 2*k; t++ {
 		if t%2 == 0 { // buy state
 			prev[t] = -prices[0]
