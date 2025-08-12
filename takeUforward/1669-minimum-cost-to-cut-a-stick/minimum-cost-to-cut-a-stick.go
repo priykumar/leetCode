@@ -1,7 +1,5 @@
 const INT_MAX int = 1<<32
-var count int
 func recursiveApproach(l, r int, cuts []int, dp [][]int) int{
-    count++
     if l > r {
         return 0
     }
@@ -35,6 +33,5 @@ func minCost(n int, cuts []int) int {
         }
     }
     res := recursiveApproach(1, sz, cuts, dp)
-    fmt.Println(count)
     return res
 }
