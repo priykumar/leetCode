@@ -22,7 +22,6 @@ func minMutation(startGene string, endGene string, bank []string) int {
     src, dst := 0, -1
     // Create ADJ matrix
     for i:=0; i<len(bank); i++ {
-        // adj[i] = []int{}
         if bank[i] == endGene {
             dst = i
         }
@@ -46,13 +45,11 @@ func minMutation(startGene string, endGene string, bank []string) int {
     }
 
     queue := []S{{src,0}}
-    // vstd := make([]bool, len(bank))
     distance := make([]int, len(bank))
     for i:=0; i<len(bank); i++ {
         distance[i] = 1<<32
     }
 
-    // vstd[0] = true
     for len(queue) > 0{
         unode, udist := queue[0].node, queue[0].dist
         queue=queue[1:]
@@ -60,7 +57,6 @@ func minMutation(startGene string, endGene string, bank []string) int {
         for _, v := range adj[unode] {
             if udist+1 < distance[v] {
                 distance[v] = udist+1
-                // vstd[v]=true
                 queue=append(queue, S{v, udist+1})
             }
         }
@@ -71,6 +67,4 @@ func minMutation(startGene string, endGene string, bank []string) int {
     }
 
     return distance[dst]
-    
-    return 0
 }
