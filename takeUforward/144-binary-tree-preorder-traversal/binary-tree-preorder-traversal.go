@@ -49,9 +49,35 @@ func morris(root *TreeNode) {
         }
     }
 }
+
+func preOrederIterative(root *TreeNode) []int {
+    if root == nil {
+        return nil
+    }
+
+    stack := []*TreeNode{}
+    res := []int{}
+    curr:=root
+    for curr != nil || len(stack) > 0 {
+        for curr != nil {
+            res = append(res, curr.Val)
+            stack = append(stack, curr)
+            curr=curr.Left   
+        }
+        curr = stack[len(stack)-1].Right
+        stack=stack[:len(stack)-1]
+    }
+
+    return res
+}
 func preorderTraversal(root *TreeNode) []int {
     isMorris := true
+    isIterative := true
     res = []int{}
+
+    if isIterative {
+        return preOrederIterative(root)
+    }
 
     if !isMorris {
         solve(root)
@@ -59,5 +85,6 @@ func preorderTraversal(root *TreeNode) []int {
         fmt.Println("MORRIS TRAVERSAL")
         morris(root)
     }
+
     return res
 }
