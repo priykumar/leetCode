@@ -1,0 +1,9 @@
+You have n items; the i-th item has value val[i] and weight wt[i].
+
+A knapsack can carry at most capacity units of weight.
+
+
+
+You may take any fraction of an item (i.e. split items).
+
+Return the maximum total value that can be placed in the knapsack, rounded to exactly 6 decimal places.
