@@ -4,7 +4,7 @@ func findMedianSortedArrays(a []int, b []int) float64 {
         return findMedianSortedArrays(b, a)   // take first array as the smaller one
     }
     low, high := 0, n1
-    left := (n1+n2+1)/2
+    left := (n1+n2+1)/2 // how many elements should be on the left side of the partition
     for low <= high {
         mid1:=(low+high)/2
         mid2:=left-mid1
