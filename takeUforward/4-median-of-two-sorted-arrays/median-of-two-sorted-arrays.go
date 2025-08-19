@@ -1,80 +1,41 @@
-func findMedianSortedArrays(A []int, B []int) float64 {
-    l1, l2 := len(A), len(B)
-
-    isEven := false
-    midIndex1 := (l1+l2)/2 + 1
-    midIndex2 := -1
-    if (l1+l2)%2 == 0 {
-        isEven = true
-        midIndex1--
-        midIndex2=midIndex1+1
+func findMedianSortedArrays(a []int, b []int) float64 {
+    n1, n2 := len(a),len(b)
+    if n1 > n2 {
+        return findMedianSortedArrays(b, a)   // take first array as the smaller one
     }
+    low, high := 0, n1
+    left := (n1+n2+1)/2
+    for low <= high {
+        mid1:=(low+high)/2
+        mid2:=left-mid1
+        l1, l2, r1, r2 := -1<<30, -1<<30, 1<<31, 1<<31
+        if mid1 < n1 {
+            r1 = a[mid1]
+        }
+        if mid2 < n2 {
+            r2 = b[mid2]
+        }
+        if mid1-1>=0 {
+            l1 = a[mid1-1]
+        }
+        if mid2-1>=0 {
+            l2 = b[mid2-1]
+        }
 
-    midEleSum:=0
+        if l1<=r2 && l2<=r1 {
+            if (n1+n2)%2 == 0 {
+                return float64(max(l1,l2)+min(r1,r2))/2.0
+            } else {
+                return float64(max(l1,l2))
+            }
+        }
 
-    a, b, ele := 0, 0, 0
-    count := 0
-    for a < l1 && b < l2 {
-        if A[a] <= B[b] {
-            ele = A[a]
-            a++
+        if l1 > r2 {
+            high=mid1-1
         } else {
-            ele = B[b]
-            b++
-        }
-        count++
-        if midIndex1==count {
-            midEleSum=ele
-            if midIndex2 == -1 {
-                break
-            }
-        }
-        if midIndex2==count {
-            midEleSum+=ele
-            break
-        }
-    } 
-
-    if count<midIndex1 || (midIndex2!=-1 && count<midIndex2) {
-        for a < l1 {
-            ele = A[a]
-            a++
-            count++
-        
-            if midIndex1==count {
-                midEleSum=ele
-                if midIndex2 == -1 {
-                    break
-                }
-            }
-            if midIndex2==count {
-                midEleSum+=ele
-                break
-            }
-        }
-
-        for b < l2 {
-            ele = B[b]
-            b++
-            count++
-
-            if midIndex1==count {
-                midEleSum=ele
-                if midIndex2 == -1 {
-                    break
-                }
-            }
-            if midIndex2==count {
-                midEleSum+=ele
-                break
-            }
+            low = mid1+1
         }
     }
 
-    res := float64(midEleSum)
-    if isEven {
-        res=res/2
-    }
-
-    return res
+    return -1.0
 }
