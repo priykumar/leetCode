@@ -1,6 +1,6 @@
 func largestRectangleArea(heights []int) int {
     n:=len(heights)
-    stack:=[]int{}
+    stack:=make([]int, 0, n)
     left, right := make([]int, n), make([]int, n)
 
     // find min at left
@@ -17,7 +17,7 @@ func largestRectangleArea(heights []int) int {
         stack = append(stack, i)
     }
 
-    stack = []int{}
+    stack=make([]int, 0, n)
     // find min at left
     for i:=n-1; i>=0; i-- {
         for len(stack) > 0 && heights[stack[len(stack)-1]] >= heights[i] {
@@ -32,7 +32,7 @@ func largestRectangleArea(heights []int) int {
         stack = append(stack, i)
     }
 
-    fmt.Println(left, right)
+    // fmt.Println(left, right)
     
     res := 0
     for i:=0; i<n; i++ {
