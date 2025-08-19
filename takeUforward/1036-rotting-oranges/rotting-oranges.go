@@ -25,7 +25,6 @@ func orangesRotting(grid [][]int) int {
 
     day := -1
     for len(queue) > 0 {
-        fmt.Println(day, queue)
         day++
         sz := len(queue)
         for i:=0; i<sz; i++ {
