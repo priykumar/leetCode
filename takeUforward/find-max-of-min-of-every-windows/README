@@ -1,0 +1,4 @@
+Given an array arr[] of size n, for every window size i from 1 to n, find the maximum of the minimum of all contiguous subarrays of size i.
+
+
+Return an array of size n where the i-th element contains the maximum of minimums for window size i + 1.
