@@ -11,7 +11,6 @@ func multiply(num1 string, num2 string) string {
     start:=0
     for j:=n2-1; j>=0; j-- {
         currStart:=n1+n2-1-start
-        fmt.Println(currStart)
         for i:=n1-1; i>=0; i-- {
             tempRes := int(num2[j]-'0')*int(num1[i]-'0')
             res[currStart]+=tempRes
