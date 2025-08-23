@@ -3,10 +3,9 @@ func merge(intervals [][]int) [][]int {
         return intervals[i][0] < intervals[j][0]
     })
     
-    fmt.Println(intervals)
     l, r := intervals[0][0], intervals[0][1]
     i, n := 1, len(intervals)
-    res := make([][]int, 0)
+    res := make([][]int, 0, n)
     for i < n {
         if intervals[i][0] <= r {
             r = max(r, intervals[i][1])
