@@ -13,7 +13,6 @@ func lengthOfLongestSubstring(s string) int {
         }
         res = max(res, uniqueCharCount)
         char[s[i]]=i
-        fmt.Println(i, uniqueCharCount, res)
     }
     return res
 }
