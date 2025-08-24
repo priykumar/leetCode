@@ -10,10 +10,8 @@ func longestSubarray(nums []int) int {
             if nums[i] == 0 {
                 zeroCount++
             }
-            fmt.Println(i, pp0, p0, length)
         } else if i == n-1 {
             length = max(length, i-pp0)
-            fmt.Println(i, pp0, p0, length)
         }
     }
 
