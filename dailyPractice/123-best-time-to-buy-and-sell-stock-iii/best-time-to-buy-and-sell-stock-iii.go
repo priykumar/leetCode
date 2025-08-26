@@ -31,7 +31,7 @@
 //     return res
 // }
 
-func solve(a []int, i int, isBuy int, dp [][]int, trans, k int) int {
+func solve(a []int, i int, dp [][]int, trans, k int) int {
     if i>=len(a) || trans == 2*k {
         return 0
     }
@@ -40,12 +40,12 @@ func solve(a []int, i int, isBuy int, dp [][]int, trans, k int) int {
         return dp[i][trans]
     }
     if trans%2==0 {
-        dp[i][trans]=max(-a[i]+solve(a, i+1, 0, dp, trans+1, k), solve(a, i+1, 1, dp, trans, k))
+        dp[i][trans]=max(-a[i]+solve(a, i+1, dp, trans+1, k), solve(a, i+1, dp, trans, k))
     } else {
-        dp[i][trans]=max(a[i]+solve(a, i+1, 1, dp, trans+1, k), solve(a, i+1, 0, dp, trans, k))
+        dp[i][trans]=max(a[i]+solve(a, i+1, dp, trans+1, k), solve(a, i+1, dp, trans, k))
     }
 
-    return dp[i][trans]
+    return dp[i][trans] // the maximum profit you can achieve starting from day i, given that you have already completed trans transactions
 }
 
 func maxProfit(prices []int) int {
@@ -65,7 +65,7 @@ func maxProfit(prices []int) int {
         dp[i]=make([]int, 2*k)
         copy(dp[i], temp)
     }
-    return solve(prices, 0, 1, dp, 0, k)
+    return solve(prices, 0, dp, 0, k)
 }
 
 func max(a, b int) int {
