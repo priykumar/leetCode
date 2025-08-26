@@ -10,7 +10,6 @@ func check(currCount, totalCount [26]int) int {
     return total
 }
 func partitionLabels(str string) []int {
-    // set := make(map[rune]int)
     totalCount := [26]int{}
     currCount := [26]int{}
     res := []int{}
