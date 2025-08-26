@@ -1,8 +1,8 @@
-func check(set map[rune]int, totalCount [26]int) int {
+func check(currCount, totalCount [26]int) int {
     total := 0
-    for k, v := range set {
-        total+=v
-        if totalCount[k-'a'] != v {
+    for i:=0; i<26; i++ {
+        total+=currCount[i]
+        if currCount[i] != 0 && currCount[i] != totalCount[i] {
             return -1
         }
     }
@@ -10,8 +10,9 @@ func check(set map[rune]int, totalCount [26]int) int {
     return total
 }
 func partitionLabels(str string) []int {
-    set := make(map[rune]int)
+    // set := make(map[rune]int)
     totalCount := [26]int{}
+    currCount := [26]int{}
     res := []int{}
 
     for _, s := range str {
@@ -19,10 +20,12 @@ func partitionLabels(str string) []int {
     }
 
     for _, s := range str {
-        set[s]++
-        if val := check(set, totalCount); val != -1 {
-            res=append(res, val)
-            set=make(map[rune]int)
+        currCount[s-'a']++
+        if currCount[s-'a'] == totalCount[s-'a'] {
+            if val := check(currCount, totalCount); val != -1 {
+                res=append(res, val)
+                currCount=[26]int{}
+            }
         }
     }
 
