@@ -1,4 +1,5 @@
 func putMarbles(weights []int, k int) int64 {
+    // https://www.youtube.com/watch?v=RyJpH8cghrE
     n := len(weights)
     if n == k || k == 1{
         return 0
@@ -8,7 +9,7 @@ func putMarbles(weights []int, k int) int64 {
         pairSum[i] = weights[i] + weights[i+1]
     }
     sort.Ints(pairSum)
-    var minVal, maxVal int64 //:= 0, 0
+    var minVal, maxVal int64
     for i:=0; i<k-1; i++ {
         minVal=minVal+int64(pairSum[i])
         maxVal=maxVal+int64(pairSum[n-1-1-i])
