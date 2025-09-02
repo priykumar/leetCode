@@ -1,23 +1,18 @@
 var xmap, ymap map[int][][]int
 func pointslieinbetween(xmax, xmin, ymax, ymin int) bool{
-    // fmt.Println("------------here")
-    // fmt.Println(xmax, xmin, ymax, ymin)
     for i:=xmin; i<=xmax; i++ {
         if val, exist := xmap[i]; exist {
             for _, v := range val {
                 if (v[0]==xmin && v[1]==ymax) || (v[0]==xmax && v[1]==ymin) {
                     continue
                 }
-                // fmt.Println(v)
                 if ymin<=v[1] && v[1]<=ymax{
-                    // fmt.Println("true")
                     return true
                 }
             }
         }
     }
 
-    // fmt.Println("false")
     return false
 }
 
@@ -44,16 +39,12 @@ func numberOfPairs(points [][]int) int {
         for j:=i+1; j<n; j++ {
             xi, yi, xj, yj := points[i][0], points[i][1], points[j][0], points[j][1]
             if (xi<=xj && yi>=yj) {
-                // fmt.Println("h1", xi,yi,xj,yj)
                 if !pointslieinbetween(xj, xi, yi, yj){
                     count++
-                    fmt.Println(count)
                 }
             } else if (xj<=xi && yj>=yi) {
-                // fmt.Println("h2", xi,yi,xj,yj)
                 if !pointslieinbetween(xi, xj, yj, yi) {
                     count++
-                    fmt.Println(count)
                 }
             }
         }
